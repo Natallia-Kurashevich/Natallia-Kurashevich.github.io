@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Giorgio Morandi</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #C7B49D;
+            height: 50px;
+            width: 100%;
+            line-height: 50px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Homepage</a></li>
+            <li><a href="painting 1.html">Painting 1</a></li>
+            <li><a href="painting 2.html">Painting 2</a></li>
+            <li><a href="painting 3.html">Painting 3</a></li>
+            <li><a href="report2.html">Report</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+
+<h1>Giorgio Morandi</h1>
+<p>Giorgio Morandi (Bologna, 1890 - 1964) was one of the greatest Italian artists of the early 20th century. The influence he derived from the teachings of Cézanne, André Derain, Cubism and the great masters of the Italian Renaissance enabled him to arrive at an original pictorial synthesis that characterized his works. The young artist at the Academy of Fine Arts in Bologna at first approached futurism, which, however, abounded early on. The artist’s canvases depict mainly landscapes, especially that of Grizzana, a small Emilian village of which he was very fond, but also flowers and still lifes.</p>
+
+</body>
+</html>
