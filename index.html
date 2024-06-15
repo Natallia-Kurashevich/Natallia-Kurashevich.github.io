@@ -30,6 +30,40 @@
             color: white;
             text-decoration: none;
         }
+        .container {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .container img {
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            max-width: 600px;
+        }
+        .team-section {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .team-table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .team-table td {
+            padding: 10px;
+        }
+        .team-table img {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+        }
+        .team-table td.names {
+            font-weight: bold;
+        }
     </style>
 </head>
 <header>
@@ -46,7 +80,29 @@
 <body>
 
 <h1>Giorgio Morandi</h1>
-<p>Giorgio Morandi (Bologna, 1890 - 1964) was one of the greatest Italian artists of the early 20th century. The influence he derived from the teachings of Cézanne, André Derain, Cubism and the great masters of the Italian Renaissance enabled him to arrive at an original pictorial synthesis that characterized his works. The young artist at the Academy of Fine Arts in Bologna at first approached futurism, which, however, abounded early on. The artist’s canvases depict mainly landscapes, especially that of Grizzana, a small Emilian village of which he was very fond, but also flowers and still lifes.</p>
-<img src="https://cdn.finestresullarte.info/rivista/immagini/2021/fn/giorgio-morandi-ritratto.jpg" alt="Giorgio Morandi Portrait">
+<div class="container">
+    <div class="images">
+        <img src="giorgio-morandi-portrait.jpg" alt="Giorgio Morandi Portrait" width="200">
+        <img src="bottles.jpg" alt="Bottles" width="200">
+    </div>
+    <p><strong>Giorgio Morandi</strong> (Bologna, 1890 - 1964) was one of the greatest Italian artists of the early 20th century. Born and raised in Bologna, Morandi spent almost his entire life in this historic city, drawing profound inspiration from its rich cultural heritage and tranquil surroundings. His early works were influenced by Cézanne and the Italian Renaissance, but he gradually developed a unique style characterized by muted colors and subtle compositions. The serene landscapes and quiet charm of Bologna deeply influenced Morandi’s work, reflecting the city’s timeless beauty and harmonious balance. Morandi’s legacy is a testament to Bologna’s vibrant artistic heritage, positioning the city as a nurturing ground for creativity and innovation.</p>
+</div>
+
+<div class="team-section">
+    <h2><strong>Our Team</strong></h2>
+    <table class="team-table">
+        <tr>
+            <td><img src="team_member1.jpg" alt="Team Member 1"></td>
+            <td><img src="team_member2.jpg" alt="Team Member 2"></td>
+            <td><img src="team_member3.jpg" alt="Team Member 3"></td>
+        </tr>
+        <tr class="names">
+            <td>Member 1</td>
+            <td>Member 2</td>
+            <td>Member 3</td>
+        </tr>
+    </table>
+</div>
+
 </body>
 </html>
