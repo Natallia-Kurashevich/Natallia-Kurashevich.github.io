@@ -30,21 +30,47 @@
             color: white;
             text-decoration: none;
         }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .image-container {
+            float: left;
+            margin-right: 20px;
+        }
+        .image-container img {
+            max-width: 300px;
+            height: auto;
+        }
+        .painting-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 100px; /* Adjusted to align the title with the middle of the image */
+            text-align: left;
+        }
     </style>
 </head>
-<header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Homepage</a></li>
-            <li><a href="stage1.html">Stage 1</a></li>
-            <li><a href="stage2.html">Stage 2</a></li>
-            <li><a href="stage3.html">Stage 3</a></li>
-            <li><a href="report.html">Report</a></li>
-        </ul>
-    </nav>
-</header>
 <body>
-    <h1>Painting 3</h1>
-    <p>Описание и изображение для третьей картины Джорджо Моранди.</p>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Homepage</a></li>
+                <li><a href="stage1.html">Stage 1</a></li>
+                <li><a href="stage2.html">Stage 2</a></li>
+                <li><a href="stage3.html">Stage 3</a></li>
+                <li><a href="report.html">Report</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
+        <h1><strong>Stage 3</strong></h1>
+        <div class="image-container">
+            <img src="montagnola.jpg" alt="Montagnola">
+        </div>
+        <div class="painting-title">veduta della Montagnola di Bologna, scorcio di giardino</div>
+        <div style="clear: both;"></div>
+        <p>Описание и изображение для третьей картины Джорджо Моранди.</p>
+    </div>
 </body>
 </html>
+
