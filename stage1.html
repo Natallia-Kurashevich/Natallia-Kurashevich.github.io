@@ -30,21 +30,67 @@
             color: white;
             text-decoration: none;
         }
+        .container {
+            margin: 20px auto;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+        .container td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .query-text {
+            padding: 10px;
+        }
     </style>
 </head>
-<header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Homepage</a></li>
-            <li><a href="stage1.html">Stage 1</a></li>
-            <li><a href="stage2.html">Stage 2</a></li>
-            <li><a href="stage3.html">Stage 3</a></li>
-            <li><a href="report.html">Report</a></li>
-        </ul>
-    </nav>
-</header>
 <body>
-    <h1>Painting 1</h1>
-    <p>paesaggio sul Savena, paesaggio con fiume </p>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Homepage</a></li>
+                <li><a href="stage1.html">Stage 1</a></li>
+                <li><a href="stage2.html">Stage 2</a></li>
+                <li><a href="stage3.html">Stage 3</a></li>
+                <li><a href="report.html">Report</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="query-text">
+                    <pre>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX cpv: <https://w3id.org/italia/onto/CPV/>
+PREFIX a-cd: <https://w3id.org/arco/ontology/context-description/>
+
+SELECT DISTINCT ?artist ?name
+WHERE {
+    ?artist rdf:type cpv:Person ;
+            rdf:type l0:Agent ;
+            rdfs:label ?name ;
+            a-cd:hasProfession ?profession ;
+            cpv:hasBirthPlace ?birthPlace.
+   ?profession l0:name "pittore".
+   ?birthPlace l0:name "Bologna".
+}
+ORDER BY ASC(?name)
+
+                    </pre>
+                </td>
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">Q.: Who are the artists that were born in Bologna, Italy?</div>
+                        <p>This query aims to show all the artists that were born in Bologna. The results are sorted in alphabetical order according to their names.</p>
+                        <p><strong>Result:</strong> [Insert query result here]</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
