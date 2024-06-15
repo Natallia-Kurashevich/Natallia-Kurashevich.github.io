@@ -36,24 +36,20 @@
         padding: 20px;
     }
     .container .images {
-        margin-right: 20px;
+        margin-left: 20px; /* Увеличиваем расстояние между изображениями и текстом */
     }
     .container .images img {
-        width: 100%;
-        max-width: 300px;
+        width: 100%; /* Уменьшаем размер изображений, чтобы они занимали меньше места */
+        max-width: 300px; /* Добавляем ограничение по максимальной ширине для изображений */
         display: block;
-        margin-bottom: 20px;
-        border-radius: 0;
+        margin-bottom: 20px; /* Пространство между изображениями */
+        border-radius: 0; /* Острые углы */
     }
     .container .text {
         max-width: 600px;
     }
     .container .text p {
         text-align: justify;
-    }
-    .extra-image {
-        text-align: center;
-        padding: 20px;
     }
     h1 {
         text-align: center;
@@ -72,7 +68,7 @@
     .team-table img {
         width: 150px;
         height: auto;
-        border-radius: 100%;
+        border-radius: 50%; /* Круглые изображения для членов команды */
     }
     .team-table td.names {
         font-weight: bold;
@@ -94,22 +90,19 @@
 
 <h1>Giorgio Morandi</h1>
 <div class="container">
-    <div class="images">
-        <img src="images/giorgio-morandi-portrait.jpg" alt="Giorgio Morandi Portrait">
-        <img src="images/flowers.jpg" alt="Flowers">
-    </div>
     <div class="text">
         <p><strong>Giorgio Morandi</strong> (1890-1964) was one of the greatest Italian artists of the early 20th century. Born and raised in Bologna, Morandi spent almost his entire life in this historic city, drawing profound inspiration from its rich cultural heritage and tranquil surroundings.</p>
     
         <p>His early works were influenced by Cézanne and the Italian Renaissance, but he gradually developed a unique style characterized by muted colors and subtle compositions. The serene landscapes and quiet charm of Bologna deeply influenced Morandi’s work, reflecting the city’s timeless beauty and harmonious balance.</p>
     
         <p>Morandi’s legacy is a testament to Bologna’s vibrant artistic heritage, positioning the city as a nurturing ground for creativity and innovation.</p>
+        
     </div>
-</div>
-
-<!-- Новое изображение под текстом -->
-<div class="extra-image">
-    <img src="images/pens.jpg" alt="Pens">
+    <div class="images">
+        <img src="images/giorgio-morandi-portrait.jpg" alt="Giorgio Morandi Portrait">
+        <img src="images/flowers.jpg" alt="Flowers">
+        <img src="images/pens.jpg" alt="Pens">
+    </div>
 </div>
 
 <div class="team-section">
