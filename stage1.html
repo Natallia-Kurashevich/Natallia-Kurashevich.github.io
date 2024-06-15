@@ -96,7 +96,6 @@ WHERE {
    ?birthPlace l0:name "Bologna".
 }
 ORDER BY ASC(?name)
-
                     </pre>
                 </td>
                 <td class="query-text">
@@ -109,6 +108,48 @@ ORDER BY ASC(?name)
             </tr>
         </table>
     </div>
+    <div class="intro-text">
+        <p>After that, we decided that we would like to have a project about a modern artist.</p>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="query-text">
+                    <pre>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX cpv: <https://w3id.org/italia/onto/CPV/>
+PREFIX a-cd: <https://w3id.org/arco/ontology/context-description/>
+
+SELECT ?artist, ?name, ?birthDate
+WHERE {
+    ?artist rdf:type cpv:Person ;
+            rdfs:label ?name ;
+            a-cd:hasProfession ?profession ;
+            cpv:hasBirthPlace ?birthPlace ;
+            cpv:dateOfBirth ?birthDate.
+   ?profession l0:name "pittore".
+   ?birthPlace l0:name "Bologna".
+    FILTER REGEX( ?birthDate, "(^18|^19|^20)").
+}
+ORDER BY ASC(?birthDate)
+LIMIT 150
+                    </pre>
+                </td>
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">Q.: Who are the artists from Bologna who were born after 1800?</div>
+                        <p>This query retrieves detailed information about the artists who were born in the 19th, 20th, and 21st centuries. The results are sorted in alphabetical order according to their names and the number of results is limited.</p>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+cpv%3A+%3Chttps%3A%2F%2Fw3id.org%2Fitalia%2Fonto%2FCPV%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0A%0D%0ASELECT+%3Fartist%2C+%3Fname%2C+%3FbirthDate%0D%0AWHERE+%7B%0D%0A++++%3Fartist+rdf%3Atype+cpv%3APerson+%3B%0D%0A++++++++++++rdfs%3Alabel+%3Fname+%3B%0D%0A++++++++++++a-cd%3AhasProfession+%3Fprofession+%3B%0D%0A++++++++++++cpv%3AhasBirthPlace+%3FbirthPlace+%3B%0D%0A++++++++++++cpv%3AdateOfBirth+%3FbirthDate.%0D%0A+++%3Fprofession+l0%3Aname+%22pittore%22.%0D%0A+++%3FbirthPlace+l0%3Aname+%22Bologna%22.%0D%0A++++FILTER+REGEX%28+%3FbirthDate%2C+%22%28%5E18%7C%5E19%7C%5E20%29%22%29.%0D%0A%7D%0D%0AORDER+BY+ASC%28%3FbirthDate%29%0D%0ALIMIT+150&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="intro-text">
+        <p>From the list of artists, we chose Giorgio Morandi - an esteemed Italian painter and printmaker known for his contemplative still lifes and landscapes. The next query was created to retrieve a detailed description of Giorgio Morandi.</p>
+    </div>
 </body>
 </html>
+
 
