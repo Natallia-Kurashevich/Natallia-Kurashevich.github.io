@@ -30,21 +30,74 @@
             color: white;
             text-decoration: none;
         }
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+        .painting-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .description {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        td {
+            vertical-align: top;
+        }
     </style>
 </head>
-<header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Homepage</a></li>
-            <li><a href="stage1.html">Stage 1</a></li>
-            <li><a href="stage2.html">Stage 2</a></li>
-            <li><a href="stage3.html">Stage 3</a></li>
-            <li><a href="report.html">Report</a></li>
-        </ul>
-    </nav>
-</header>
 <body>
-    <h1>Painting 2</h1>
-    <p>paesaggio. Grizzana, paesaggio con colline.</p>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Homepage</a></li>
+                <li><a href="stage1.html">Stage 1</a></li>
+                <li><a href="stage2.html">Stage 2</a></li>
+                <li><a href="stage3.html">Stage 3</a></li>
+                <li><a href="report.html">Report</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
+        <h1><strong>Stage 2</strong></h1>
+        <img src="Grizzana.jpg" alt="Grizzana" style="float: left; margin-right: 20px;">
+        <div class="painting-title">paesaggio. Grizzana, paesaggio con colline (stampa)</div>
+        <div class="description">
+            We began with retrieving new information about ..... and decided to use the following SPARQL query:
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <pre>
+PREFIX cis: &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/&gt;
+DESCRIBE cis:0800057188
+                    </pre>
+                </td>
+                <td>
+                    <strong>Purpose</strong><br>
+                    This SPARQL DESCRIBE query aims to retrieve a detailed description of a specific resource within a dataset. In this case, the resource is a historic or artistic property identified by the URI cis:0800057188.<br><br>
+                    <strong>What the Query Seeks to Discover</strong><br>
+                    The query seeks to discover all the information available about the historic or artistic property with the given identifier. The result of the query is an HTML5 document with embedded RDF statements represented using HTML+Microdata notation. Here’s the detailed information:<br><br>
+                    <ul>
+                        <li>rdf:Classes the resource belongs to (e.g., MovableCulturalProperty, HistoricOrArtisticProperty).</li>
+                        <li>rdfs:title of the resource (e.g., "paesaggio. Grizzana, paesaggio con colline (stampa) by Morandi Giorgio").</li>
+                        <li>rdfs:Additional information (e.g., "stampa, stampa di invenzione paesaggio con colline").</li>
+                        <li>dc:creator - Creator of the resource (e.g., Giorgio Morandi).</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
