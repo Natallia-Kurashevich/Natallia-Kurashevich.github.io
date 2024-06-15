@@ -183,7 +183,7 @@ PREFIX agent: <https://w3id.org/arco/resource/Agent/>
 SELECT *
 WHERE {
     ?culturalProperty a arco:HistoricOrArtisticProperty ;
-    a-cd:hasAuthor agent:e39bcf78576de271752956c4c4e38632
+             a-cd:hasAuthor agent:e39bcf78576de271752956c4c4e38632
     OPTIONAL { ?culturalProperty dc:title ?title }
 }
 ORDER BY ASC(?title)
@@ -194,6 +194,43 @@ ORDER BY ASC(?title)
                         <div class="query-title">Q.: What are all the cultural properties authored by Giorgio Morandi?</div>
                         <p>This query aims to show all the cultural properties authored by Giorgio Morandi sorted in alphabetical order. If possible, it also shows the title of a painting.</p>
                         <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+agent%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FAgent%2F%3E%0D%0ASELECT+*%0D%0AWHERE+%7B%0D%0A%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0Aa-cd%3AhasAuthor+agent%3Ae39bcf78576de271752956c4c4e38632%0D%0AOPTIONAL+%7B+%3FculturalProperty+dc%3Atitle+%3Ftitle+%7D%0D%0A%7D%0D%0AORDER+BY+ASC%28%3Ftitle%29%0D%0ALIMIT+100&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="intro-text">
+        <p>Eventually, we decided to find the paintings that are situated in Bologna and lack historical information. As in the next stage, we would like to enrich the ontology with this information.</p>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="query-text">
+                    <pre>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX arco: <https://w3id.org/arco/ontology/arco/>
+PREFIX a-cd: <https://w3id.org/arco/ontology/context-description/>
+PREFIX agent: <https://w3id.org/arco/resource/Agent/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?culturalProperty (SAMPLE(?title)) (SAMPLE(?placeName)) (SAMPLE(?historicalInformation))
+WHERE {
+    ?culturalProperty rdf:type arco:HistoricOrArtisticProperty ;
+          a-cd:hasAuthor agent:e39bcf78576de271752956c4c4e38632 ;
+          dc:title ?title ;
+          dcterms:spatial ?place .
+    ?place rdfs:label ?placeName .
+    OPTIONAL { ?culturalProperty a-cd:historicalInformation ?historicalInformation }
+    FILTER CONTAINS (?placeName, "Bologna").
+}
+GROUP BY ?culturalProperty
+                    </pre>
+                </td>
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">Q.: What are the cultural properties that are situated in Bologna and authored by Giorgio Morandi?</div>
+                        <p>This query aims to identify the cultural properties that are situated in Bologna and authored by Giorgio Morandi. The OPTIONAL keyword helps to find entities that lack historical information.</p>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+agent%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FAgent%2F%3E%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0D%0A%0D%0ASELECT+%3FculturalProperty+%28SAMPLE%28%3Ftitle%29%29+%28SAMPLE%28%3FplaceName%29%29+%28SAMPLE%28%3FhistoricalInformation%29%29%0D%0AWHERE+%7B%0D%0A++++%3FculturalProperty+rdf%3Atype+arco%3AHistoricOrArtisticProperty+%3B%0D%0A++++++++++++++++++++++a-cd%3AhasAuthor+agent%3Ae39bcf78576de271752956c4c4e38632+%3B%0D%0A++++++++++++++++++++++dc%3Atitle+%3Ftitle+%3B%0D%0A++++++++++++++++++++++dcterms%3Aspatial+%3Fplace+.%0D%0A++++%3Fplace+rdfs%3Alabel+%3FplaceName+.%0D%0A++++OPTIONAL+%7B+%3FculturalProperty+a-cd%3AhistoricalInformation+%3FhistoricalInformation+%7D%0D%0A++++FILTER+CONTAINS+%28%3FplaceName%2C+%22Bologna%22%29.%0D%0A%7D%0D%0AGROUP+BY+%3FculturalProperty&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
                     </div>
                 </td>
             </tr>
