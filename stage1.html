@@ -103,7 +103,7 @@ ORDER BY ASC(?name)
                     <div class="query-text">
                         <div class="query-title">Q.: Who are the artists that were born in Bologna, Italy?</div>
                         <p>This query aims to show all the artists that were born in Bologna. The results are sorted in alphabetical order according to their names.</p>
-                        <p><strong>Result:</strong> [Insert query result here]</p>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+cpv%3A+%3Chttps%3A%2F%2Fw3id.org%2Fitalia%2Fonto%2FCPV%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fartist+%3Fname%0D%0AWHERE+%7B%0D%0A++++%3Fartist+rdf%3Atype+cpv%3APerson+%3B%0D%0A++++++++++++rdf%3Atype+l0%3AAgent+%3B%0D%0A++++++++++++rdfs%3Alabel+%3Fname+%3B%0D%0A++++++++++++a-cd%3AhasProfession+%3Fprofession+%3B%0D%0A++++++++++++cpv%3AhasBirthPlace+%3FbirthPlace.%0D%0A+++%3Fprofession+l0%3Aname+%22pittore%22.%0D%0A+++%3FbirthPlace+l0%3Aname+%22Bologna%22.%0D%0A%7D%0D%0AORDER+BY+ASC%28%3Fname%29&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
                     </div>
                 </td>
             </tr>
