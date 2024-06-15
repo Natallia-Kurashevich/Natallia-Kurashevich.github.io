@@ -44,6 +44,18 @@
         .query-text {
             padding: 10px;
         }
+        .section-title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 24px; /* Увеличение размера шрифта */
+            margin-top: 20px;
+        }
+        .intro-text {
+            margin-left: 20px;
+        }
+        .intro-text h2 {
+            font-size: 18px; /* Размер шрифта для заголовка введения */
+        }
     </style>
 </head>
 <body>
@@ -58,6 +70,11 @@
             </ul>
         </nav>
     </header>
+    <div class="section-title">Stage 1</div>
+    <div class="intro-text">
+        <h2>Data Exploration and SPARQL Query Formulation.</h2>
+        <p>We started our project with the ArCo knowledge graph exploration and SPARQL query formulation to identify the topics of our interest within the ArCo knowledge graph. We wanted our project to be about an artist from Bologna. With that in mind, we created the first SPARQL query.</p>
+    </div>
     <div class="container">
         <table>
             <tr>
@@ -94,3 +111,4 @@ ORDER BY ASC(?name)
     </div>
 </body>
 </html>
+
