@@ -149,6 +149,56 @@ LIMIT 150
     <div class="intro-text">
         <p>From the list of artists, we chose Giorgio Morandi - an esteemed Italian painter and printmaker known for his contemplative still lifes and landscapes. The next query was created to retrieve a detailed description of Giorgio Morandi.</p>
     </div>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="query-text">
+                    <pre>
+PREFIX cis: <https://w3id.org/arco/resource/Agent/>
+DESCRIBE cis:e39bcf78576de271752956c4c4e38632
+                    </pre>
+                </td>
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">This DESCRIBE query returns an RDF graph that describes the resources found (in this case information about Giorgio Morandi).</div>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+cis%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FAgent%2F%3E%0D%0ADESCRIBE+cis%3Ae39bcf78576de271752956c4c4e38632%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="intro-text">
+        <p>Then we wanted to find the paintings authored by Giorgio Morandi.</p>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="query-text">
+                    <pre>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX arco: <https://w3id.org/arco/ontology/arco/>
+PREFIX a-cd: <https://w3id.org/arco/ontology/context-description/>
+PREFIX agent: <https://w3id.org/arco/resource/Agent/>
+
+SELECT *
+WHERE {
+    ?culturalProperty a arco:HistoricOrArtisticProperty ;
+    a-cd:hasAuthor agent:e39bcf78576de271752956c4c4e38632
+    OPTIONAL { ?culturalProperty dc:title ?title }
+}
+ORDER BY ASC(?title)
+                    </pre>
+                </td>
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">Q.: What are all the cultural properties authored by Giorgio Morandi?</div>
+                        <p>This query aims to show all the cultural properties authored by Giorgio Morandi sorted in alphabetical order. If possible, it also shows the title of a painting.</p>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+agent%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FAgent%2F%3E%0D%0ASELECT+*%0D%0AWHERE+%7B%0D%0A%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0Aa-cd%3AhasAuthor+agent%3Ae39bcf78576de271752956c4c4e38632%0D%0AOPTIONAL+%7B+%3FculturalProperty+dc%3Atitle+%3Ftitle+%7D%0D%0A%7D%0D%0AORDER+BY+ASC%28%3Ftitle%29%0D%0ALIMIT+100&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
 
