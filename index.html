@@ -36,13 +36,14 @@
         padding: 20px;
     }
     .container .images {
-        margin-right: 5px; /* Space between images and text */
+        margin-right: 20px; /* Уменьшаем расстояние между изображениями и текстом */
     }
     .container .images img {
-        width: 50%; /* Half the full size */
+        width: 100%; /* Уменьшаем размер изображений, чтобы они занимали меньше места */
+        max-width: 300px; /* Добавляем ограничение по максимальной ширине для изображений */
         display: block;
-        margin-bottom: 20px; /* Space between the images */
-        border-radius: 0; /* Sharp corners */
+        margin-bottom: 20px; /* Пространство между изображениями */
+        border-radius: 0; /* Острые углы */
     }
     .container .text {
         max-width: 600px;
@@ -67,7 +68,7 @@
     .team-table img {
         width: 150px;
         height: auto;
-        border-radius: 0%; /* This does not keep the team member images circular */
+        border-radius: 50%; /* Круглые изображения для членов команды */
     }
     .team-table td.names {
         font-weight: bold;
@@ -92,6 +93,7 @@
     <div class="images">
         <img src="images/giorgio-morandi-portrait.jpg" alt="Giorgio Morandi Portrait">
         <img src="images/flowers.jpg" alt="Flowers">
+        <img src="images/pens.jpg" alt="Pens"> <!-- Новое изображение -->
     </div>
     <div class="text">
         <p><strong>Giorgio Morandi</strong> (1890-1964) was one of the greatest Italian artists of the early 20th century. Born and raised in Bologna, Morandi spent almost his entire life in this historic city, drawing profound inspiration from its rich cultural heritage and tranquil surroundings.</p>
