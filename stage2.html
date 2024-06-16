@@ -82,6 +82,13 @@
             padding: 2px; /* Поля вокруг выделенного текста */
             border-radius: 3px; /* Скругление углов */
         }
+	    /* Стили для painting-title */
+        .painting-title {
+            color: #C7B49D; /* Цвет вашего хедера */
+            font-size: 24px; /* Необязательно, если уже указано в общем стиле */
+            font-weight: bold; /* Необязательно, если уже указано в общем стиле */
+            /* Дополнительные стили, если необходимо */
+        }
 
     </style>
 </head>
@@ -179,7 +186,7 @@ DESCRIBE cis:0800057188
             <table class="equal-width">
                 <tr>
                     <td>
-                        <i>Chain-of-Thought Prompting</i><br><br>
+                        <i><span class="highlight">Chain-of-Thought Prompting</span></i><br><br>
                         "Grizzana, paesaggio con colline" by Giorgio Morandi<br>
                         @prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .<br>
                         @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br>
@@ -203,7 +210,7 @@ DESCRIBE cis:0800057188
                         &nbsp;&nbsp;&nbsp;&nbsp;rdfs:label "Emilia-Romagna"^^xsd:string .<br>
                     </td>
                     <td>
-                        <i>Adjusted the temperature and tokens settings + Prompt Chaining technique</i><br><br>
+                        <i>Adjusted the temperature and tokens settings + <span class="highlight">Prompt Chaining technique</span></i><br><br>
                         just prefixes<br>
                         @prefix arco: &lt;http://www.ontologydesignpatterns.org/ont/arco/arco.owl#&gt;<br>
                         @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
