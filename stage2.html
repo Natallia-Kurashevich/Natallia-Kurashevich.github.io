@@ -49,8 +49,8 @@
             border-collapse: collapse;
         }
         table, td {
-            border: 1px solid black;
-            padding: 10px;
+            border: 1px solid #ccc;
+            padding: 8px;
         }
         td {
             vertical-align: top;
@@ -117,12 +117,12 @@ DESCRIBE cis:0800057188
         <div class="additional-info">
             <h2><strong>Using a Large Language Model to Enrich Metadata</strong></h2>
             <p>After gathering all the information, the next steps involve enriching the data and utilizing Large Language Models (LLMs) for further analysis. For this comparison, I will employ two models: ChatGPT and Mixtral.</p>
-            <p><strong>The first request was the following:</strong></p>
+            <p>The first request was the following:</p>
             <p>
                 Cultural Property: Grizzana, paesaggio con colline (stampa)<br>
                 Author: Morandi Giorgio<br>
-                Q: What does this cultural property represent?<be>
-                <i>Zero-shot prompting</i>
+                Q: What does this cultural property represent?<br>
+                Zero-shot prompting
             </p>
             <table>
                 <tr>
@@ -142,10 +142,32 @@ DESCRIBE cis:0800057188
                     </td>
                 </tr>
             </table>
+            <p>Second question: Can you extract exact cultural entities from this description? Give me a result as a list. Few-shot prompting (examples)</p>
+            <table>
+                <tr>
+                    <td>
+                        1) "Grizzana, paesaggio con colline" by Giorgio Morandi<br>
+                        2) Grizzana Morandi<br>
+                        3) Emilia-Romagna
+                    </td>
+                    <td>
+                        * Grizzana, paesaggio con colline (stampa)<br>
+                        * Giorgio Morandi<br>
+                        * Grizzana<br>
+                        * Italy<br>
+                        * Landscape with hills<br>
+                        * Etching<br>
+                        * Still lifes<br>
+                        * Landscapes genre
+                    </td>
+                </tr>
+            </table>
+            <h2>Third question: Could you transform this description into RDF format and use Arco ontology?</h2>
         </div>
     </div>
 </body>
 </html>
+
 
 
 
