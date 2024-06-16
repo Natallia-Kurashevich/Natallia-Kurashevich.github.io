@@ -278,54 +278,6 @@ WHERE {
             </tr>
         </table>
     </div>
-	
-	<h2>Enhancing Extracted Information</h2> 
-    <p><strong>SPARQL Update Query</strong></p>
-
-    <table> /* Следующая таблица */
-        <tr>
-            <th>SPARQL Query</th>
-            <th>Explanation</th>
-        </tr>
-        <tr>
-            <td>
-                <pre>
-PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
-PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
-PREFIX dct: &lt;http://purl.org/dc/terms/&gt;
-PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
-
-DELETE {
-  ?CulturalProperty dct:description ?oldDescription .
-}
-INSERT {
-  ?CulturalProperty dct:description """
-    A print by Giorgio Morandi representing the rolling hills of Grizzana, emphasizing the subtlety, simplicity, and tonal harmony of the Italian landscape. 
-The work captures the atmosphere and essence of the place, using a minimalist approach that evokes a sense of stillness and contemplation.
-  """ ;
-  a-cd:historicalInformation """
-    This artwork, created in 1913, is part of Giorgio Morandi's exploration of the Italian landscape, reflecting the artistic movements of the early 20th century. 
-Morandi's work during this period was influenced by both the Metaphysical Art movement and his own unique minimalist style, which sought to convey profound emotion and atmosphere through simple, yet evocative, compositions.
-  """ .
-}
-WHERE {
-  ?CulturalProperty a arco:HistoricOrArtisticProperty ;
-                    dc:title "Grizzana, paesaggio con colline" ;
-                    dc:creator ?creator .
-  ?creator foaf:name "Giorgio Morandi" .
-  OPTIONAL {
-    ?CulturalProperty dct:description ?oldDescription .
-  }
-}
-                </pre>
-            </td>
-            <td>
-                <p><strong>Question:</strong><br>We wanted to update the description of the cultural property "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi and add historical information.</p>
-                <p><strong>Purpose:</strong><br>This update aims to enhance the metadata of the cultural property "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi within the ArCo knowledge graph. Specifically, it replaces the existing description with a more detailed one and adds historical information to provide context about the artwork's creation and significance. The new description emphasizes the artistic features and style of the print, while the historical information reflects Morandi's influence and the artistic movements of the early 20th century.</p>
-                <p><strong>Result:</strong><br>The updated entry will have a detailed description and additional historical information, enriching the knowledge graph with more comprehensive metadata about the artwork.</p>
-            </td>
-        </tr>
-    </table>
 </body>
 </html>
 
