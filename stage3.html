@@ -75,15 +75,7 @@
             margin: 0;
             white-space: pre-wrap; /* Preserve formatting and wrap text */
         }
-        .custom-paragraph {
-margin-bottom: 20px; /* Отступ снизу /
-margin-left: 20px; / Отступ слева */
-}
-.sparql-query {
-font-family: "Courier New", Courier, monospace; /* Моноширинный шрифт для SPARQL запроса /
-font-size: 14px; / Размер шрифта для SPARQL запроса /
-white-space: pre-wrap; / Сохранение форматирования */
-    }
+        
     </style>
 </head>
 <body>
@@ -232,10 +224,7 @@ DESCRIBE cis:0800057203</pre></td>
 &lt;/arco:Place&gt;</pre></td>
             </tr>
         </table>
-    <p class="custom-paragraph"><strong>New Triples </strong></p>
-<table class="custom-table" style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-left: auto; margin-right: auto;">
-    <tr>
-        <td class="sparql-query" style="border: 1px solid black; padding: 10px;">
+    <p><strong>New Triples </strong></p>
 <pre>
 PREFIX a-cd: <https://w3id.org/arco/ontology/context-description/>
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
@@ -250,7 +239,6 @@ FILTER(REGEX(?slabel," Montagnola", "i"))
 
 </pre>
         </td>
-        <td class="text-container" style="border: 1px solid black; padding: 10px;">
             <p><strong>Question:</strong>
 Are there in ArCo the subjects that we can connect to “veduta della Montagnola di Bologna”</p>
 
