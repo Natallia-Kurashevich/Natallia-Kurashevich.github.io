@@ -75,6 +75,12 @@
             margin: 0;
             white-space: pre-wrap; /* Preserve formatting and wrap text */
         }
+        .highlight {
+            background-color: lightblue; /* Светло бирюзовый цвет фона */
+            padding: 2px; /* Поля вокруг выделенного текста */
+            border-radius: 3px; /* Скругление углов */
+        }
+
         
     </style>
 </head>
@@ -167,7 +173,7 @@ DESCRIBE cis:0800057203</pre></td>
             </tr>
         </table>
     </div>
-    <p style="padding-left: 20px;"><strong>Could you transform this description into RDF format and use Arco ontology?</strong><i>Chain-of-Thought Prompting</i> </p>
+    <p style="padding-left: 20px;"><strong>Could you transform this description into RDF format and use Arco ontology? </strong><i><span class="highlight">Chain-of-Thought Prompting</span></i> </p>
                     
         <table style="border-collapse: collapse; width: 100%; margin-left: 20px; margin-top: auto; margin-right: auto;">
             <tr>
@@ -225,11 +231,10 @@ DESCRIBE cis:0800057203</pre></td>
             </tr>
         </table>
 
-
-    <p style="margin-left: 20px;">New Triples</p>
+<p style="margin-left: 20px;"><strong>New Triples</strong></p>
 <table border="1" style="border-collapse: collapse; margin-left: 20px;">
     <tr>
-        <td style="padding: 0; vertical-align: top; width: 50%;">
+        <td style="padding: 20px; vertical-align: top; width: 50%;">
             <pre>
 PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
 PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
@@ -243,15 +248,16 @@ WHERE
 }
             </pre>
         </td>
-        <td style="padding: 0; vertical-align: top; width: 50%;">
+        <td style="padding: 20px; vertical-align: top; width: 50%;">
             <p><strong>Question:</strong></p>
             <p>Are there in ArCo the subjects that we can connect to "veduta della Montagnola di Bologna"?</p>
             <p><strong>Purpose:</strong></p>
             <p>This query aims to identify the subjects that can be involved with our painting within the ArCo knowledge graph. The FILTER clause is utilized to narrow down the results based on a specific condition, searching for entities whose label matches the string "Montagnola" in a case-insensitive manner.</p>
-            <p style="margin: 0;">https://w3id.org/arco/resource/HistoricOrArtisticProperty/0800057203 a-cd:hasSubject https://w3id.org/arco/resource/Subject/9bfc42c163767f14ab945ea7153fd5ad</p>
+            <p>https://w3id.org/arco/resource/HistoricOrArtisticProperty/0800057203 a-cd:hasSubject https://w3id.org/arco/resource/Subject/9bfc42c163767f14ab945ea7153fd5ad</p>
         </td>
     </tr>
 </table>
+
 
 
 
