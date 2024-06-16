@@ -223,6 +223,37 @@ DESCRIBE cis:0800057203</pre></td>
 &lt;/arco:Place&gt;</pre></td>
             </tr>
         </table>
+    <p class="custom-paragraph"><strong>New Triples </strong></p>
+<table class="custom-table" style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-left: auto; margin-right: auto;">
+    <tr>
+        <td class="sparql-query" style="border: 1px solid black; padding: 10px;">
+<pre>
+PREFIX a-cd: <https://w3id.org/arco/ontology/context-description/>
+PREFIX arco: <https://w3id.org/arco/ontology/arco/>
+SELECT DISTINCT ?sub ?slabel
+WHERE
+{ 
+?cp a-cd:hasSubject ?sub .
+?sub a a-cd:Subject ;
+rdfs:label ?slabel .
+FILTER(REGEX(?slabel," Montagnola", "i"))
+}
+
+</pre>
+        </td>
+        <td class="text-container" style="border: 1px solid black; padding: 10px;">
+            <p><strong>Question:</strong>
+Are there in ArCo the subjects that we can connect to “veduta della Montagnola di Bologna”</p>
+
+<p><strong>Purpose:</strong>
+This query aims to identify the subjects that can be involved with our painting within the ArCo knowledge graph. The FILTER clause is utilized to narrow down the results based on a specific condition, searching for entities whose label matches the string "Montagnola" in a case-insensitive manner.</p>
+            <p>https://w3id.org/arco/resource/HistoricOrArtisticProperty/0800057203
+            a-cd:hasSubject
+            https://w3id.org/arco/resource/Subject/9bfc42c163767f14ab945ea7153fd5ad</p>
+        </td>
+    </tr>
+</table>
+
 
 
 
