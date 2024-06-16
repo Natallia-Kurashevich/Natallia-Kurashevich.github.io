@@ -101,6 +101,11 @@
     margin-bottom: 20px; /* Отступ снизу */
     margin-left: 20px; /* Отступ слева */
 
+.sparql-query {
+    font-family: "Courier New", Courier, monospace; /* Моноширинный шрифт для SPARQL запроса */
+    font-size: 14px; /* Размер шрифта для SPARQL запроса */
+    white-space: pre-wrap; /* Сохранение форматирования */
+
     </style>
 </head>
 <body>
@@ -347,6 +352,30 @@ WHERE {
     </tr>
 </table>
 	<p class="custom-paragraph"><strong>Conclusion and New Triples </strong> </p>
+	<table class="custom-table">
+    <tr>
+        <td class="sparql-query">
+<pre>
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+SELECT DISTINCT ?sub ?slabel
+WHERE
+{ 
+  ?cp a-cd:hasSubject ?sub .
+  ?sub a a-cd:Subject ;
+  rdfs:label ?slabel .
+  FILTER(REGEX(?slabel,"Grizzana", "i"))
+}
+</pre>
+        </td>
+        <td class="text-container">
+            <p>Considering that there is no information present now in ArCo about other Grizzana paintings, we can help enrich the ontology and make new triple:</p>
+            <p><a href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0800057188">https://w3id.org/arco/resource/HistoricOrArtisticProperty/0800057188</a></p>
+            <p>a-cd:hasSubject</p>
+            <p><a href="https://dati.beniculturali.it/lodview-arco/resource/Subject/a4ff1b18f0dd7db0841ab26f4f52764d.html">https://dati.beniculturali.it/lodview-arco/resource/Subject/a4ff1b18f0dd7db0841ab26f4f52764d.html</a></p>
+        </td>
+    </tr>
+</table>
 	
 </body>
 </html>
