@@ -172,7 +172,7 @@ DESCRIBE cis:0800057188
             <table class="equal-width">
                 <tr>
                     <td>
-                        <i>Chain-of-Thought Prompting</i><br><br>
+                        <strong>Chain-of-Thought Prompting</strong><br><br>
                         "Grizzana, paesaggio con colline" by Giorgio Morandi<br>
                         @prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .<br>
                         @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br>
@@ -196,7 +196,7 @@ DESCRIBE cis:0800057188
                         &nbsp;&nbsp;&nbsp;&nbsp;rdfs:label "Emilia-Romagna"^^xsd:string .<br>
                     </td>
                     <td>
-                        <i>Adjusted the temperature and tokens settings + Prompt Chaining technique</i><br><br>
+                        <strong>Adjusted the temperature and tokens settings + Prompt Chaining technique</strong><br><br>
                         just prefixes<br>
                         @prefix arco: &lt;http://www.ontologydesignpatterns.org/ont/arco/arco.owl#&gt;<br>
                         @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
@@ -218,9 +218,61 @@ DESCRIBE cis:0800057188
                 </tr>
             </table>
         </div>
+        <h2>Verifying Extracted Information</h2>
+        <p>The LLM created new entities, but what if these entities already exist in the knowledge graph? In such cases we want to reuse it.</p>
+        <p>Detailed Metadata Query</p>
+        <table>
+            <tr>
+                <td>
+                    <pre>
+PREFIX arco: <https://w3id.org/arco/ontology/arco/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?CulturalProperty ?title ?creator ?spatial
+WHERE {
+  {
+	?CulturalProperty a arco:HistoricOrArtisticProperty;
+                  	dc:title ?title .
+	FILTER(REGEX(?title, "paesaggio. Grizzana", "i")) .
+  }
+  UNION
+  {
+	?CulturalProperty a arco:CulturalProperty ;
+                  	dc:creator ?creator .
+	?creator foaf:name "Giorgio Morandi" .
+  }
+  UNION
+  {
+	?CulturalProperty a arco:CulturalProperty ;
+                  	dct:spatial ?spatial .
+	FILTER(REGEX(?spatial, "Grizzana", "i")) .
+  }
+  UNION
+  {
+	?CulturalProperty a arco:CulturalProperty ;
+                  	dct:description ?description .
+	FILTER(REGEX(?description, "rolling hills of Grizzana", "i")) .
+  }
+}
+                    </pre>
+                </td>
+                <td>
+                    <strong>Question:</strong><br>
+                    I wanted to find if there is a similar cultural property entry in the ArCo knowledge graph based on specific criteria related to the artwork "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi.<br><br>
+                    <strong>Purpose:</strong><br>
+                    This query aims to identify cultural properties in the ArCo knowledge graph that match certain criteria related to the artwork "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi. Specifically, it checks if there are any entries with a title containing "paesaggio. Grizzana," a creator named Giorgio Morandi, a spatial description mentioning "Grizzana," or a description including "rolling hills of Grizzana." The UNION clause is used to combine these conditions, and the FILTER clause is applied to perform case-insensitive searches on the relevant fields.<br><br>
+                    <strong>Result:</strong><br>
+                    This query will return cultural properties that match any of the specified criteria, helping to identify if similar entries already exist in the knowledge graph.
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
+
 
 
 
