@@ -77,6 +77,12 @@
         .equal-width td {
             width: 50%;
         }
+	    .highlight {
+            text-decoration: underline;
+            text-decoration-color: lightblue; /* Светло бирюзовый цвет */
+            text-decoration-thickness: 2px; /* Толщина подчеркивания */
+            text-underline-offset: 3px; /* Отступ подчеркивания от текста */
+        }
     </style>
 </head>
 <body>
@@ -126,7 +132,7 @@ DESCRIBE cis:0800057188
                 Cultural Property: Grizzana, paesaggio con colline (stampa)<br>
                 Author: Morandi Giorgio<br>
                 Q: What does this cultural property represent?<br>
-                <i>Zero-shot prompting</i>
+                <i><span class="highlight">Zero-shot prompting</span></i>
             </p>
             <table class="equal-width">
                 <tr>
@@ -149,7 +155,7 @@ DESCRIBE cis:0800057188
                     </td>
                 </tr>
             </table>
-            <p><strong>Second question: Can you extract exact cultural entities from this description?</strong> Give me a result as a list. <i>Few-shot prompting (examples)</i></p>
+            <p><strong>Second question: Can you extract exact cultural entities from this description?</strong> Give me a result as a list. <I><span class="highlight">Few-shot prompting</span> (examples)</i></p>
             <table class="equal-width">
                 <tr>
                     <td>
