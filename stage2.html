@@ -36,7 +36,7 @@
         .painting-title {
             font-size: 24px;
             font-weight: bold;
-            margin-top: 100px; /* Adjusted to align the title with the middle of the image */
+            margin-top: 80px; /* Adjusted to align the title slightly higher */
         }
         .description {
             margin-top: 20px;
@@ -72,6 +72,9 @@
         }
         .additional-info {
             margin-top: 20px;
+        }
+        .equal-width td {
+            width: 50%;
         }
     </style>
 </head>
@@ -124,7 +127,7 @@ DESCRIBE cis:0800057188
                 Q: What does this cultural property represent?<br>
                 <i>Zero-shot prompting</i>
             </p>
-            <table>
+            <table class="equal-width">
                 <tr>
                     <td><strong>ChatGPT</strong></td>
                     <td><strong>Mixtral</strong></td>
@@ -146,7 +149,7 @@ DESCRIBE cis:0800057188
                 </tr>
             </table>
             <p><strong>Second question: Can you extract exact cultural entities from this description?</strong> Give me a result as a list. <i>Few-shot prompting (examples)</i></p>
-            <table>
+            <table class="equal-width">
                 <tr>
                     <td>
                         1) "Grizzana, paesaggio con colline" by Giorgio Morandi<br>
@@ -166,10 +169,59 @@ DESCRIBE cis:0800057188
                 </tr>
             </table>
             <p><strong>Third question: Could you transform this description into RDF format and use Arco ontology?</strong></p>
+            <table class="equal-width">
+                <tr>
+                    <td>
+                        <strong>Chain-of-Thought Prompting</strong><br><br>
+                        "Grizzana, paesaggio con colline" by Giorgio Morandi<br>
+                        @prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .<br>
+                        @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br>
+                        @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .<br><br>
+                        &lt;https://example.org/cultural_property/Grizzana_paesaggio_con_colline&gt; a arco:CulturalProperty ;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;arco:title "Grizzana, paesaggio con colline"^^xsd:string ;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;arco:hasCreator &lt;https://example.org/creator/Giorgio_Morandi&gt; .<br><br>
+                        &lt;https://example.org/creator/Giorgio_Morandi&gt; a foaf:Person ;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;foaf:name "Giorgio Morandi"^^xsd:string .<br><br>
+                        Grizzana Morandi<br>
+                        @prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .<br>
+                        @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .<br>
+                        @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .<br><br>
+                        &lt;https://example.org/location/Grizzana_Morandi&gt; a arco:Place ;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;rdfs:label "Grizzana Morandi"^^xsd:string .<br><br>
+                        Emilia-Romagna<br>
+                        @prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .<br>
+                        @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .<br>
+                        @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .<br><br>
+                        &lt;https://example.org/location/Emilia_Romagna&gt; a arco:Place ;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;rdfs:label "Emilia-Romagna"^^xsd:string .<br>
+                    </td>
+                    <td>
+                        <strong>Adjusted the temperature and tokens settings + Prompt Chaining technique</strong><br><br>
+                        just prefixes<br>
+                        @prefix arco: &lt;http://www.ontologydesignpatterns.org/ont/arco/arco.owl#&gt;<br>
+                        @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
+                        @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;<br>
+                        @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;<br><br>
+                        an example of a querie request<br>
+                        PREFIX arco: &lt;http://www.ontologydesignpatterns.org/ont/arco/arco.owl#&gt;<br>
+                        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;<br><br>
+                        SELECT ?creator ?place WHERE {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;?asset a arco:CulturalHeritageAsset ;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rdfs:label "Grizzana, paesaggio con colline (stampa)"@en ;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arco:hasCreator ?creator ;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arco:represents ?place .<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;?creator rdfs:label ?creatorName .<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;?place rdfs:label ?placeName .<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;FILTER(lang(?creatorName) = "en" && lang(?placeName) = "en")<br>
+                        }
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </body>
 </html>
+
 
 
 
