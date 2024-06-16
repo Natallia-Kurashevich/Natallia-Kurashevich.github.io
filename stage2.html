@@ -172,7 +172,7 @@ DESCRIBE cis:0800057188
             <table class="equal-width">
                 <tr>
                     <td>
-                        <strong>Chain-of-Thought Prompting</strong><br><br>
+                        <i>Chain-of-Thought Prompting</i><br><br>
                         "Grizzana, paesaggio con colline" by Giorgio Morandi<br>
                         @prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .<br>
                         @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .<br>
@@ -196,7 +196,7 @@ DESCRIBE cis:0800057188
                         &nbsp;&nbsp;&nbsp;&nbsp;rdfs:label "Emilia-Romagna"^^xsd:string .<br>
                     </td>
                     <td>
-                        <strong>Adjusted the temperature and tokens settings + Prompt Chaining technique</strong><br><br>
+                        <i>Adjusted the temperature and tokens settings + Prompt Chaining technique</i><br><br>
                         just prefixes<br>
                         @prefix arco: &lt;http://www.ontologydesignpatterns.org/ont/arco/arco.owl#&gt;<br>
                         @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
@@ -220,7 +220,7 @@ DESCRIBE cis:0800057188
         </div>
         <h2>Verifying Extracted Information</h2>
         <p>The LLM created new entities, but what if these entities already exist in the knowledge graph? In such cases we want to reuse it.</p>
-        <p>Detailed Metadata Query</p>
+        <p><strong>Detailed Metadata Query</strong></p>
         <table>
             <tr>
                 <td>
@@ -261,7 +261,7 @@ WHERE {
                 </td>
                 <td>
                     <strong>Question:</strong><br>
-                    I wanted to find if there is a similar cultural property entry in the ArCo knowledge graph based on specific criteria related to the artwork "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi.<br><br>
+                    We wanted to find if there is a similar cultural property entry in the ArCo knowledge graph based on specific criteria related to the artwork "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi.<br><br>
                     <strong>Purpose:</strong><br>
                     This query aims to identify cultural properties in the ArCo knowledge graph that match certain criteria related to the artwork "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi. Specifically, it checks if there are any entries with a title containing "paesaggio. Grizzana," a creator named Giorgio Morandi, a spatial description mentioning "Grizzana," or a description including "rolling hills of Grizzana." The UNION clause is used to combine these conditions, and the FILTER clause is applied to perform case-insensitive searches on the relevant fields.<br><br>
                     <strong>Result:</strong><br>
