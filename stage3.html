@@ -51,6 +51,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            border: 1px solid black;
         }
         table, th, td {
             border: 1px solid black;
@@ -62,7 +63,6 @@
         th {
             background-color: #f2f2f2;
         }
-        
         .left-align {
             text-align: left;
         }
@@ -90,7 +90,6 @@
         </div>
         <div class="painting-title">veduta della Montagnola di Bologna, scorcio di giardino</div>
         <div style="clear: both;"></div>
-        
         
         <h2 class="left-align">Initial Query to the Knowledge Graph</h2>
         <p>We began with retrieving new information about "veduta della Montagnola di Bologna, scorcio di giardino" and decided to use the following SPARQL query:</p>
@@ -140,9 +139,32 @@ DESCRIBE cis:0800057203</pre></td>
                 I hope this helps! Let me know if you have any other questions.</td>
             </tr>
         </table>
+        
+        <p>Can you extract exact cultural entities from this description? Give me a result as a list. Few-shot prompting</p>
+        <table>
+            <tr>
+                <th>ChatGPT</th>
+                <th>Gemini</th>
+            </tr>
+            <tr>
+                <td>
+                    • "Veduta della Montagnola di Bologna, scorcio di giardino" by Giorgio Morandi<br>
+                    • Montagnola Park in Bologna<br>
+                    • Giorgio Morandi
+                </td>
+                <td>
+                    • veduta della Montagnola di Bologna, scorcio di giardino (print) by Giorgio Morandi<br>
+                    • Montagnola (park)<br>
+                    • Bologna, Italy
+                </td>
+            </tr>
+        </table>
+        
+        <p>Could you transform this description into RDF format and use Arco ontology?</p>
     </div>
 </body>
 </html>
+
 
 
 
