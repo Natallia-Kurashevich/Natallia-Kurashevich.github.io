@@ -85,14 +85,21 @@
 	    .custom-table {
     border-spacing: 10px; /* Отступы между ячейками таблицы */
     border-collapse: separate; /* Разделенные границы */
-    font-size: 18px; /* Измените это значение для нужного размера шрифта */
+    font-size: 16px; /* Измените это значение для нужного размера шрифта */
 }
 
 .custom-image {
     width: 600px; /* Измените это значение для нужного вам размера */
     height: auto; /* Автоматическая высота для сохранения пропорций */
 }
+.custom-header {
+    margin-bottom: 20px; /* Отступ снизу */
+    margin-left: 20px; /* Отступ слева */
+}
 
+.custom-paragraph {
+    margin-bottom: 20px; /* Отступ снизу */
+    margin-left: 20px; /* Отступ слева */
 
     </style>
 </head>
@@ -288,8 +295,8 @@ WHERE {
             </tr>
         </table>
     </div>
-	<h2 style="margin-bottom: 20px;">Enhancing Extracted Information</h2>
-        <p style="margin-bottom: 20px;"><strong>SPARQL Update Query </strong></p>
+	<h2 class="custom-header">Enhancing Extracted Information</h2>
+        <p class="custom-paragraph"><strong>SPARQL Update Query </strong></p>
 	<table class="custom-table">
     <tr>
         <td>
@@ -300,7 +307,7 @@ WHERE {
             <p>We wanted to update the description of the cultural property "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi and add historical information.</p>
             <strong>Purpose:</strong>
             <p>This update aims to enhance the metadata of the cultural property "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi within the ArCo knowledge graph. Specifically, it replaces the existing description with a more detailed one and adds historical information to provide context about the artwork's creation and significance. The new description emphasizes the artistic features and style of the print, while the historical information reflects Morandi's influence and the artistic movements of the early 20th century.</p>
-            <strong>>Result:</strong>
+            <strong>Result:</strong>
             <p>The updated entry will have a detailed description and additional historical information, enriching the knowledge graph with more comprehensive metadata about the artwork.</p>
         </td>
     </tr>
