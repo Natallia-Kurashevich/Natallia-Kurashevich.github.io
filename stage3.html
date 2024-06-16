@@ -32,7 +32,6 @@
         }
         .content {
             padding: 20px;
-            text-align: center;
         }
         .image-container {
             float: left;
@@ -63,6 +62,9 @@
         th {
             background-color: #f2f2f2;
         }
+        .left-align {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -85,17 +87,13 @@
         <div class="painting-title">veduta della Montagnola di Bologna, scorcio di giardino</div>
         <div style="clear: both;"></div>
         
-        <h2>Initial Query to the Knowledge Graph</h2>
+        <h2 class="left-align">Initial Query to the Knowledge Graph</h2>
         <p>We began with retrieving new information about "veduta della Montagnola di Bologna, scorcio di giardino" and decided to use the following SPARQL query:</p>
         <table>
             <tr>
-                <th>SPARQL Query</th>
-                <th>Description</th>
-            </tr>
-            <tr>
                 <td><pre>PREFIX cis: &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/&gt;
 DESCRIBE cis:0800057203</pre></td>
-                <td>This SPARQL DESCRIBE query aims to retrieve a detailed description of a specific resource within a dataset. In this case, the resource is a historic or artistic property identified by the URI cis:0800057203. The query seeks to discover all the information available about the historic or artistic property with the given identifier.</td>
+                <td><strong>Purpose</strong><br>This SPARQL DESCRIBE query aims to retrieve a detailed description of a specific resource within a dataset. In this case, the resource is a historic or artistic property identified by the URI cis:0800057203.<br><br>The query seeks to discover all the information available about the historic or artistic property with the given identifier.</td>
             </tr>
         </table>
     </div>
