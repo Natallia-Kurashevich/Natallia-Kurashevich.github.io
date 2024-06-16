@@ -65,6 +65,9 @@
         .left-align {
             text-align: left;
         }
+        .center-align {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -80,12 +83,13 @@
         </nav>
     </header>
     <div class="content">
-        <h1><strong>Stage 3</strong></h1>
+        <h1 class="center-align"><strong>Stage 3</strong></h1>
         <div class="image-container">
             <img src="images/montagnola.jpg" alt="Montagnola">
         </div>
         <div class="painting-title">veduta della Montagnola di Bologna, scorcio di giardino</div>
         <div style="clear: both;"></div>
+        <p>Описание и изображение для третьей картины Джорджо Моранди.</p>
         
         <h2 class="left-align">Initial Query to the Knowledge Graph</h2>
         <p>We began with retrieving new information about "veduta della Montagnola di Bologna, scorcio di giardino" and decided to use the following SPARQL query:</p>
@@ -96,9 +100,49 @@ DESCRIBE cis:0800057203</pre></td>
                 <td><strong>Purpose</strong><br>This SPARQL DESCRIBE query aims to retrieve a detailed description of a specific resource within a dataset. In this case, the resource is a historic or artistic property identified by the URI cis:0800057203.<br><br>The query seeks to discover all the information available about the historic or artistic property with the given identifier.</td>
             </tr>
         </table>
+        
+        <h2 class="left-align">Using a Large Language Model to Enrich Metadata</h2>
+        <p>For this comparison, we will employ two models: ChatGPT and Gemini.<br>
+        Cultural Property: veduta della Montagnola di Bologna, scorcio di giardino (stampa)<br>
+        Author: Morandi Giorgio<br>
+        Q: What does this cultural property represent? (Zero-shot Prompting)</p>
+        
+        <table>
+            <tr>
+                <th>ChatGPT</th>
+                <th>Gemini</th>
+            </tr>
+            <tr>
+                <td>The cultural property "Veduta della Montagnola di Bologna, scorcio di giardino" (View of the Montagnola of Bologna, glimpse of a garden) is a print by the Italian artist Giorgio Morandi. Morandi is renowned for his contemplative and detailed depictions of still lifes and landscapes. This particular print captures a view of the Montagnola Park in Bologna, Italy.
+                <br><br>
+                Representation of the Cultural Property
+                <ol>
+                    <li>Montagnola Park: The Montagnola Park is a historic and scenic public park located in Bologna. It has significant cultural and historical value, offering a peaceful green space amidst the urban environment of the city.</li>
+                    <li>Artistic Style: Morandi's work is known for its minimalist approach and meticulous attention to composition and lighting. This print likely reflects these qualities, portraying the park's natural beauty with a serene and contemplative atmosphere.</li>
+                    <li>Historical Context: The artwork captures a specific moment or perspective within the park, providing insight into the environment and aesthetics of Bologna during Morandi's time. It serves as a cultural and historical record, preserving the appearance and ambiance of the park as seen through the eyes of a prominent artist.</li>
+                    <li>Personal Connection: Morandi spent most of his life in Bologna, and his works often reflect his intimate connection with the local landscape. This print is not only a representation of the park but also an expression of Morandi's personal experiences and artistic vision.</li>
+                </ol>
+                In summary, this cultural property represents a blend of natural beauty, historical significance, and artistic expression, encapsulating a view of Bologna's Montagnola Park as interpreted by Giorgio Morandi.</td>
+                <td>The cultural property "veduta della Montagnola di Bologna, scorcio di giardino (stampa)" is an etching by the Italian artist Giorgio Morandi, created in 1932. It depicts a view of the Montagnola, a public park in Bologna, Italy, with a glimpse of a garden. The print is characterized by Morandi's signature style of muted tones and geometric forms, conveying a sense of tranquility and introspection.
+                <br><br>
+                Here's a more detailed description of the cultural property:
+                <ul>
+                    <li>Subject: The etching shows a view of the Montagnola, a hill and park in Bologna, Italy. In the foreground, there is a glimpse of a garden with trees and shrubs. In the background, there are buildings and the city skyline.</li>
+                    <li>Style: Morandi's style is characterized by its use of muted tones, often shades of gray and brown, and simple, geometric forms. He often depicted everyday objects, such as bottles and boxes, in a way that emphasized their form and texture.</li>
+                    <li>Interpretation: The "veduta della Montagnola di Bologna, scorcio di giardino" is a typical example of Morandi's work. The muted tones and geometric forms create a sense of tranquility and introspection. The view of the garden suggests a connection to nature, while the buildings in the background represent the human world. The print can be seen as an invitation to contemplate the relationship between the natural and the man-made world.</li>
+                </ul>
+                Additional information:
+                <ul>
+                    <li>The etching is part of a series of prints that Morandi made of the Montagnola in the early 1930s.</li>
+                    <li>The print is held in the collections of several museums, including the Pinacoteca Nazionale di Bologna and the Museum of Modern Art in New York.</li>
+                </ul>
+                I hope this helps! Let me know if you have any other questions.</td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
+
 
 
 
