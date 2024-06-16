@@ -48,6 +48,19 @@
             margin-top: 100px; /* Adjusted to align the title with the middle of the image */
             text-align: left;
         }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
@@ -68,9 +81,16 @@
             <img src="images/montagnola.jpg" alt="Montagnola">
         </div>
         <div class="painting-title">veduta della Montagnola di Bologna, scorcio di giardino</div>
-        <div style="clear: both;"></div>
-        <p>Описание и изображение для третьей картины Джорджо Моранди.</p>
+        <p>Initial Query to the Knowledge Graph</p>
+        <p>We began with retrieving new information about "veduta della Montagnola di Bologna, scorcio di giardino" and decided to use the following SPARQL query:</p>
+        <table>
+            <tr>
+                <td style="width: 50%;"><strong>PREFIX cis: &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/&gt;<br>DESCRIBE cis:0800057203</strong></td>
+                <td>This SPARQL DESCRIBE query aims to retrieve a detailed description of a specific resource within a dataset. In this case, the resource is a historic or artistic property identified by the URI cis: 0800057203.<br>The query seeks to discover all the information available about the historic or artistic property with the given identifier.</td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
+
 
