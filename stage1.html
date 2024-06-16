@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Stage 2 - Giorgio Morandi</title>
+    <title>Stage 1 - Giorgio Morandi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,48 +30,31 @@
             color: white;
             text-decoration: none;
         }
-        .content {
-            padding: 20px;
-        }
-        .painting-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 100px; /* Adjusted to align the title with the middle of the image */
-        }
-        .description {
-            margin-top: 20px;
-            font-size: 16px;
-            clear: both;
-        }
-        table {
-            width: 100%;
-            margin-top: 20px;
+        .container {
+            margin: 20px auto;
+            width: 80%;
+            border: 1px solid #ccc;
             border-collapse: collapse;
         }
-        table, td {
+        .container td {
             border: 1px solid #ccc;
             padding: 8px;
+            text-align: left;
         }
-        td {
-            vertical-align: top;
+        .query-text {
+            padding: 10px;
         }
-        .image-container {
-            float: left;
-            margin-right: 20px;
-        }
-        .image-container img {
-            max-width: 300px;
-            height: auto;
-        }
-        .painting-title-container {
-            display: flex;
-            align-items: center;
-        }
-        .painting-title {
-            margin-left: 20px; /* Space between image and title */
-        }
-        .additional-info {
+        .section-title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 24px; /* Увеличение размера шрифта */
             margin-top: 20px;
+        }
+        .intro-text {
+            margin-left: 20px;
+        }
+        .intro-text h2 {
+            font-size: 18px; /* Размер шрифта для заголовка введения */
         }
     </style>
 </head>
@@ -87,85 +70,170 @@
             </ul>
         </nav>
     </header>
-    <div class="content">
-        <h1 style="text-align: center;"><strong>Stage 2</strong></h1>
-        <div class="painting-title-container">
-            <div class="image-container">
-                <img src="images/grizzana.jpg" alt="Grizzana">
-            </div>
-            <div class="painting-title">paesaggio. Grizzana, paesaggio con colline</div>
-        </div>
-        <h2>Initial Query to the Knowledge Graph</h2>
-        <div class="description">
-            We began with retrieving new information about "paesaggio. Grizzana, paesaggio con colline" and decided to use the following SPARQL query:
-        </div>
+    <div class="section-title">Stage 1</div>
+    <div class="intro-text">
+        <h2>Data Exploration and SPARQL Query Formulation.</h2>
+        <p>We started our project with the ArCo knowledge graph exploration and SPARQL query formulation to identify the topics of our interest within the ArCo knowledge graph. We wanted our project to be about an artist from Bologna. With that in mind, we created the first SPARQL query.</p>
+    </div>
+    <div class="container">
         <table>
             <tr>
-                <td>
+                <td class="query-text">
                     <pre>
-PREFIX cis: &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/&gt;
-DESCRIBE cis:0800057188
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX cpv: &lt;https://w3id.org/italia/onto/CPV/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+SELECT DISTINCT ?artist ?name
+WHERE {
+    ?artist rdf:type cpv:Person ;
+            rdf:type l0:Agent ;
+            rdfs:label ?name ;
+            a-cd:hasProfession ?profession ;
+            cpv:hasBirthPlace ?birthPlace.
+   ?profession l0:name "pittore".
+   ?birthPlace l0:name "Bologna".
+}
+ORDER BY ASC(?name)
                     </pre>
                 </td>
-                <td>
-                    <strong>Purpose</strong><br>
-                    This SPARQL DESCRIBE query aims to retrieve a detailed description of a specific resource within a dataset. In this case, the resource is a historic or artistic property identified by the URI cis:0800057188.<br><br>
-                    The query seeks to discover all the information available about the historic or artistic property with the given identifier. 
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">Q.: Who are the artists that were born in Bologna, Italy?</div>
+                        <p>This query aims to show all the artists that were born in Bologna. The results are sorted in alphabetical order according to their names.</p>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+cpv%3A+%3Chttps%3A%2F%2Fw3id.org%2Fitalia%2Fonto%2FCPV%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fartist+%3Fname%0D%0AWHERE+%7B%0D%0A++++%3Fartist+rdf%3Atype+cpv%3APerson+%3B%0D%0A++++++++++++rdf%3Atype+l0%3AAgent+%3B%0D%0A++++++++++++rdfs%3Alabel+%3Fname+%3B%0D%0A++++++++++++a-cd%3AhasProfession+%3Fprofession+%3B%0D%0A++++++++++++cpv%3AhasBirthPlace+%3FbirthPlace.%0D%0A+++%3Fprofession+l0%3Aname+%22pittore%22.%0D%0A+++%3FbirthPlace+l0%3Aname+%22Bologna%22.%0D%0A%7D%0D%0AORDER+BY+ASC%28%3Fname%29&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
+                    </div>
                 </td>
             </tr>
         </table>
-        <div class="additional-info">
-            <h2><strong>Using a Large Language Model to Enrich Metadata</strong></h2>
-            <p>After gathering all the information, the next steps involve enriching the data and utilizing Large Language Models (LLMs) for further analysis. For this comparison, I will employ two models: ChatGPT and Mixtral.</p>
-            <p>The first request was the following:</p>
-            <p>
-                Cultural Property: Grizzana, paesaggio con colline (stampa)<br>
-                Author: Morandi Giorgio<br>
-                Q: What does this cultural property represent?<br>
-                Zero-shot prompting
-            </p>
-            <table>
-                <tr>
-                    <td><strong>ChatGPT</strong></td>
-                    <td><strong>Mixtral</strong></td>
-                </tr>
-                <tr>
-                    <td>
-                        The cultural property "Grizzana, paesaggio con colline" (Grizzana, landscape with hills) is a print by Giorgio Morandi, an influential Italian painter and printmaker known for his contemplative and serene landscapes and still lifes. This particular work represents a landscape scene featuring the rolling hills of Grizzana, a village in the Bologna province of Italy. Morandi often depicted this rural area, which he found inspiring for its tranquil and unassuming beauty.
+    </div>
+    <div class="intro-text">
+        <p>After that, we decided that we would like to have a project about a modern artist.</p>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="query-text">
+                    <pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;<http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX cpv: &lt;https://w3id.org/italia/onto/CPV/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
 
-                        Morandi's landscapes are characterized by their subtlety and simplicity. He focused on capturing the essence and atmosphere of a place rather than its detailed realism. The depiction of the Grizzana hills in this print reflects Morandi's unique style, emphasizing form, composition, and tonal harmony. The landscape is likely rendered with a quiet, introspective quality, encouraging viewers to appreciate the subtle interplay of light, shadow, and the contours of the land.
-
-                        In summary, "Grizzana, paesaggio con colline" represents Morandi's deep connection to the Italian countryside, his minimalist approach to landscape art, and his ability to evoke a sense of stillness and contemplation through his work.
-                    </td>
-                    <td>
-                        This cultural property is a print titled "Grizzana, paesaggio con colline" (Grizzana, landscape with hills) by the Italian artist Giorgio Morandi. It depicts a rural landscape with rolling hills and a few scattered buildings, likely in the area of Grizzana, a place where Morandi often stayed and worked. Morandi is best known for his still life paintings, but he also created a significant number of landscapes in various media, including etching and watercolor.
-                    </td>
-                </tr>
-            </table>
-            <p>Second question: Can you extract exact cultural entities from this description? Give me a result as a list. Few-shot prompting (examples)</p>
-            <table>
-                <tr>
-                    <td>
-                        1) "Grizzana, paesaggio con colline" by Giorgio Morandi<br>
-                        2) Grizzana Morandi<br>
-                        3) Emilia-Romagna
-                    </td>
-                    <td>
-                        * Grizzana, paesaggio con colline (stampa)<br>
-                        * Giorgio Morandi<br>
-                        * Grizzana<br>
-                        * Italy<br>
-                        * Landscape with hills<br>
-                        * Etching<br>
-                        * Still lifes<br>
-                        * Landscapes genre
-                    </td>
-                </tr>
-            </table>
-            <h2>Third question: Could you transform this description into RDF format and use Arco ontology?</h2>
-        </div>
+SELECT ?artist, ?name, ?birthDate
+WHERE {
+    ?artist rdf:type cpv:Person ;
+            rdfs:label ?name ;
+            a-cd:hasProfession ?profession ;
+            cpv:hasBirthPlace ?birthPlace ;
+            cpv:dateOfBirth ?birthDate.
+   ?profession l0:name "pittore".
+   ?birthPlace l0:name "Bologna".
+    FILTER REGEX( ?birthDate, "(^18|^19|^20)").
+}
+ORDER BY ASC(?birthDate)
+LIMIT 150
+                    </pre>
+                </td>
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">Q.: Who are the artists from Bologna who were born after 1800?</div>
+                        <p>This query retrieves detailed information about the artists who were born in the 19th, 20th, and 21st centuries. The results are sorted in alphabetical order according to their names and the number of results is limited.</p>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+cpv%3A+%3Chttps%3A%2F%2Fw3id.org%2Fitalia%2Fonto%2FCPV%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0A%0D%0ASELECT+%3Fartist%2C+%3Fname%2C+%3FbirthDate%0D%0AWHERE+%7B%0D%0A++++%3Fartist+rdf%3Atype+cpv%3APerson+%3B%0D%0A++++++++++++rdfs%3Alabel+%3Fname+%3B%0D%0A++++++++++++a-cd%3AhasProfession+%3Fprofession+%3B%0D%0A++++++++++++cpv%3AhasBirthPlace+%3FbirthPlace+%3B%0D%0A++++++++++++cpv%3AdateOfBirth+%3FbirthDate.%0D%0A+++%3Fprofession+l0%3Aname+%22pittore%22.%0D%0A+++%3FbirthPlace+l0%3Aname+%22Bologna%22.%0D%0A++++FILTER+REGEX%28+%3FbirthDate%2C+%22%28%5E18%7C%5E19%7C%5E20%29%22%29.%0D%0A%7D%0D%0AORDER+BY+ASC%28%3FbirthDate%29%0D%0ALIMIT+150&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="intro-text">
+        <p>From the list of artists, we chose Giorgio Morandi - an esteemed Italian painter and printmaker known for his contemplative still lifes and landscapes. The next query was created to retrieve a detailed description of Giorgio Morandi.</p>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="query-text">
+                    <pre>
+PREFIX cis: &lt;https://w3id.org/arco/resource/Agent/&gt;
+DESCRIBE cis:e39bcf78576de271752956c4c4e38632
+                    </pre>
+                </td>
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">This DESCRIBE query returns an RDF graph that describes the resources found (in this case information about Giorgio Morandi).</div>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+cis%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FAgent%2F%3E%0D%0ADESCRIBE+cis%3Ae39bcf78576de271752956c4c4e38632%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="intro-text">
+        <p>Then we wanted to find the paintings authored by Giorgio Morandi.</p>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="query-text">
+                    <pre>
+PREFIX rdf: &lthttp://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX arco: &lthttps://w3id.org/arco/ontology/arco/&gt;
+PREFIX a-cd: &lthttps://w3id.org/arco/ontology/context-description/&gt;
+PREFIX agent: &lthttps://w3id.org/arco/resource/Agent/&gt;
+SELECT *
+WHERE {
+    ?culturalProperty a arco:HistoricOrArtisticProperty ;
+             a-cd:hasAuthor agent:e39bcf78576de271752956c4c4e38632
+    OPTIONAL { ?culturalProperty dc:title ?title }
+}
+ORDER BY ASC(?title)
+                    </pre>
+                </td>
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">Q.: What are all the cultural properties authored by Giorgio Morandi?</div>
+                        <p>This query aims to show all the cultural properties authored by Giorgio Morandi sorted in alphabetical order. If possible, it also shows the title of a painting.</p>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+agent%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FAgent%2F%3E%0D%0ASELECT+*%0D%0AWHERE+%7B%0D%0A%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0Aa-cd%3AhasAuthor+agent%3Ae39bcf78576de271752956c4c4e38632%0D%0AOPTIONAL+%7B+%3FculturalProperty+dc%3Atitle+%3Ftitle+%7D%0D%0A%7D%0D%0AORDER+BY+ASC%28%3Ftitle%29%0D%0ALIMIT+100&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="intro-text">
+        <p>Eventually, we decided to find the paintings that are situated in Bologna and lack historical information. As in the next stage, we would like to enrich the ontology with this information.</p>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="query-text">
+                    <pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX agent: &lt;https://w3id.org/arco/resource/Agent/&gt;
+PREFIX dcterms: &lt;http://purl.org/dc/terms/&gt;
+SELECT ?culturalProperty (SAMPLE(?title)) (SAMPLE(?placeName)) (SAMPLE(?historicalInformation))
+WHERE {
+    ?culturalProperty rdf:type arco:HistoricOrArtisticProperty ;
+          a-cd:hasAuthor agent:e39bcf78576de271752956c4c4e38632 ;
+          dc:title ?title ;
+          dcterms:spatial ?place .
+    ?place rdfs:label ?placeName .
+    OPTIONAL { ?culturalProperty a-cd:historicalInformation ?historicalInformation }
+    FILTER CONTAINS (?placeName, "Bologna").
+}
+GROUP BY ?culturalProperty
+                    </pre>
+                </td>
+                <td class="query-text">
+                    <div class="query-text">
+                        <div class="query-title">Q.: What are the cultural properties that are situated in Bologna and authored by Giorgio Morandi?</div>
+                        <p>This query aims to identify the cultural properties that are situated in Bologna and authored by Giorgio Morandi. The OPTIONAL keyword helps to find entities that lack historical information.</p>
+                        <p><strong>Result:</strong> <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+agent%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FAgent%2F%3E%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0D%0A%0D%0ASELECT+%3FculturalProperty+%28SAMPLE%28%3Ftitle%29%29+%28SAMPLE%28%3FplaceName%29%29+%28SAMPLE%28%3FhistoricalInformation%29%29%0D%0AWHERE+%7B%0D%0A++++%3FculturalProperty+rdf%3Atype+arco%3AHistoricOrArtisticProperty+%3B%0D%0A++++++++++++++++++++++a-cd%3AhasAuthor+agent%3Ae39bcf78576de271752956c4c4e38632+%3B%0D%0A++++++++++++++++++++++dc%3Atitle+%3Ftitle+%3B%0D%0A++++++++++++++++++++++dcterms%3Aspatial+%3Fplace+.%0D%0A++++%3Fplace+rdfs%3Alabel+%3FplaceName+.%0D%0A++++OPTIONAL+%7B+%3FculturalProperty+a-cd%3AhistoricalInformation+%3FhistoricalInformation+%7D%0D%0A++++FILTER+CONTAINS+%28%3FplaceName%2C+%22Bologna%22%29.%0D%0A%7D%0D%0AGROUP+BY+%3FculturalProperty&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank">https://dati.cultura.gov.it/sparql</a></p>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
-
 
