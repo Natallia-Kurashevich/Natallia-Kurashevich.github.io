@@ -330,7 +330,7 @@ WHERE {
         </td>
     </tr>
 </table>
-	<h2 class="custom-header">SPARQL Query to Find Historically Connected Entries</h2>
+	<p class="custom-paragraph"><strong>SPARQL Query to Find Historically Connected Entries </strong> </p>
 <table class="custom-table">
     <tr>
         <td>
@@ -342,7 +342,7 @@ WHERE {
             <strong>Purpose:</strong>
             <p>This query aims to identify other cultural properties in the ArCo knowledge graph that share historical connections with the artwork "paesaggio. Grizzana, paesaggio con colline (stampa)" by Giorgio Morandi. By finding properties created in the same period or influenced by the same artistic movements, we can better understand the broader historical and cultural context of the artwork.</p>
             <strong>Result:</strong>
-            <p>The query will provide a list of cultural properties that share historical connections with the specified artwork, including their labels, dates, descriptions, and creators. This information will help to map the historical and cultural landscape in which the artwork was created and appreciated.</p>
+            <p>The query will provide a list of cultural properties that share historical connections with the specified artwork, including their labels, dates, descriptions, and creators. This information will help to map the historical and cultural landscape in which the artwork was created and appreciated. <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+dc%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%3E%0D%0APREFIX+dct%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0D%0APREFIX+foaf%3A+%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3FCulturalProperty+%3Ftitle+%3Fcreator+%3Fdate+%3Fdescription%0D%0AWHERE+%7B%0D%0A++%3FCulturalProperty+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0A++++++++++++++++++++dc%3Acreator+%3Fcreator+%3B%0D%0A++++++++++++++++++++dc%3Adate+%3Fdate+%3B%0D%0A++++++++++++++++++++dct%3Adescription+%3Fdescription+%3B%0D%0A++++++++++++++++++++rdfs%3Alabel+%3Ftitle+.%0D%0A%0D%0A++%23+Filter+by+the+historical+period+of+Giorgio+Morandi%27s+artwork%0D%0A++FILTER+%28%3Fdate+%3E%3D+%221913-01-01%22%5E%5Exsd%3Adate+%26%26+%3Fdate+%3C%3D+%221913-12-31%22%5E%5Exsd%3Adate%29+.%0D%0A%0D%0A++%23+Additional+criteria+to+ensure+connections+with+the+artistic+movements%0D%0A++%3Fcreator+foaf%3Aname+%3FcreatorName+.%0D%0A++FILTER+%28REGEX%28%3Fdescription%2C+%22Metaphysical+Art%22%2C+%22i%22%29+%7C%7C+REGEX%28%3Fdescription%2C+%22minimalist%22%2C+%22i%22%29%29+.%0D%0A%7D%0D%0ALIMIT+100%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on"target="_blank">https://dati.cultura.gov.it/sparql</a></p>
         </td>
     </tr>
 </table>
