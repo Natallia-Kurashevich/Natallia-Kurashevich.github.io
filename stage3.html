@@ -168,6 +168,63 @@ DESCRIBE cis:0800057203</pre></td>
         
         <p>Could you transform this description into RDF format and use Arco ontology?<i>Chain-of-Thought Prompting</i> </p>
     </div>
+            
+        <table style="border-collapse: collapse; width: 100%;">
+            <tr>
+                <th style="border: 1px solid black; background-color: #f2f2f2; padding: 10px;">ChatGPT</th>
+                <th style="border: 1px solid black; background-color: #f2f2f2; padding: 10px;">Gemini</th>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 10px;"><pre>@prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+
+&lt;https://example.org/artwork/veduta-della-montagnola-di-bologna&gt; a arco:CulturalProperty ;
+    dc:title "Veduta della Montagnola di Bologna, scorcio di giardino" ;
+    arco:hasAuthor &lt;https://example.org/person/giorgio-morandi&gt; ;
+    arco:depicts &lt;https://example.org/place/montagnola-park&gt; ;
+    dcterms:creator &lt;https://example.org/person/giorgio-morandi&gt; ;
+    dcterms:subject &lt;https://example.org/place/montagnola-park&gt; ;
+    foaf:depiction &lt;https://example.org/artwork/veduta-della-montagnola-di-bologna/image&gt; .
+
+&lt;https://example.org/person/giorgio-morandi&gt; a foaf:Person ;
+    foaf:name "Giorgio Morandi" .
+
+&lt;https://example.org/place/montagnola-park&gt; a arco:Place ;
+    dc:title "Montagnola Park in Bologna".</pre></td>
+                <td style="border: 1px solid black; padding: 10px;"><pre># Cultural Property
+&lt;artwork rdf:about="http://example.org/artwork/veduta-montagnola"&gt;
+  &lt;rdf:type rdf:resource="arco:Work"/&gt;
+  &lt;arco:title xml:lang="it"&gt;veduta della Montagnola di Bologna, scorcio di giardino (stampa)&lt;/arco:title&gt;
+  &lt;arco:creationDate&gt;1932&lt;/arco:creationDate&gt;  # Year of creation (if known)
+  &lt;arco:technique rdf:resource="arco:Etching"/&gt;  # Technique (if known)
+  &lt;arco:depicts rdf:resource="http://example.org/entity/montagnola"/&gt;
+  &lt;arco:creator rdf:resource="http://example.org/artist/giorgio-morandi"/&gt;
+&lt;/artwork&gt;
+
+# Author (Artist)
+&lt;foaf:Person rdf:about="http://example.org/artist/giorgio-morandi"&gt;
+  &lt;rdf:type rdf:resource="foaf:Agent"/&gt;
+  &lt;foaf:name xml:lang="it"&gt;Giorgio Morandi&lt;/foaf:name&gt;
+&lt;/foaf:Person&gt;
+
+# Depicted Entity (Place)
+&lt;arco:Place rdf:about="http://example.org/entity/montagnola"&gt;
+  &lt;rdf:type rdf:resource="arco:Place"/&gt;
+  &lt;arco:name xml:lang="it"&gt;Montagnola&lt;/arco:name&gt;
+  &lt;arco:locatedIn rdf:resource="http://example.org/entity/bologna"/&gt;
+&lt;/arco:Place&gt;
+
+# Depicted Entity (City)
+&lt;arco:Place rdf:about="http://example.org/entity/bologna"&gt;
+  &lt;rdf:type rdf:resource="arco:Place"/&gt;
+  &lt;arco:name xml:lang="it"&gt;Bologna&lt;/arco:name&gt;
+  &lt;arco:partOf rdf:resource="http://example.org/entity/italy"/&gt;  # Can be further extended with country information
+&lt;/arco:Place&gt;</pre></td>
+            </tr>
+        </table>
+
 </body>
 </html>
 
