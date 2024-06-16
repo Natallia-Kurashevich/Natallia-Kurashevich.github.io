@@ -278,11 +278,11 @@ WHERE {
             </tr>
         </table>
     </div>
-	/* Следующая таблица */
-	<h2>Enhancing Extracted Information</h2>
+	
+	<h2>Enhancing Extracted Information</h2> 
     <p><strong>SPARQL Update Query</strong></p>
 
-    <table>
+    <table> /* Следующая таблица */
         <tr>
             <th>SPARQL Query</th>
             <th>Explanation</th>
@@ -300,10 +300,12 @@ DELETE {
 }
 INSERT {
   ?CulturalProperty dct:description """
-    A print by Giorgio Morandi representing the rolling hills of Grizzana, emphasizing the subtlety, simplicity, and tonal harmony of the Italian landscape. The work captures the atmosphere and essence of the place, using a minimalist approach that evokes a sense of stillness and contemplation.
+    A print by Giorgio Morandi representing the rolling hills of Grizzana, emphasizing the subtlety, simplicity, and tonal harmony of the Italian landscape. 
+The work captures the atmosphere and essence of the place, using a minimalist approach that evokes a sense of stillness and contemplation.
   """ ;
   a-cd:historicalInformation """
-    This artwork, created in 1913, is part of Giorgio Morandi's exploration of the Italian landscape, reflecting the artistic movements of the early 20th century. Morandi's work during this period was influenced by both the Metaphysical Art movement and his own unique minimalist style, which sought to convey profound emotion and atmosphere through simple, yet evocative, compositions.
+    This artwork, created in 1913, is part of Giorgio Morandi's exploration of the Italian landscape, reflecting the artistic movements of the early 20th century. 
+Morandi's work during this period was influenced by both the Metaphysical Art movement and his own unique minimalist style, which sought to convey profound emotion and atmosphere through simple, yet evocative, compositions.
   """ .
 }
 WHERE {
